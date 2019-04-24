@@ -45,13 +45,12 @@ var testingTransform = function(array) {
   return transform;
 };
 
-var insertionSort = function(array
-) {
+var insertionSort = function(array) {
 	let results = [];
 	let length = array.length;
 	for (let i=0; i<length;i++){
 		let temp = array[i];
-		temp.i = i;
+		if(!temp.i) temp.i = i;
 		let added = false;
 		let count = 0;
 		while(!added){
@@ -73,6 +72,8 @@ var insertionSort = function(array
 			else count++;
 		}
 	}
-	array = results;
+	for(let i=0;i<results.length;i++){
+		array[i] = results[i];
+	}
   return array;
 };
