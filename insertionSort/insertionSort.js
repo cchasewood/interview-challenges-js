@@ -47,6 +47,31 @@ var testingTransform = function(array) {
 
 var insertionSort = function(array
 ) {
-  // Your code goes here. Feel free to add helper functions if needed.
+	let results = [];
+	let length = array.length;
+	for (let i=0; i<length;i++){
+		let temp = array[i];
+		let added = false;
+		let count = 0;
+		while(!added){
+			if(!results[count]){
+				results.push(temp);
+				added = true;
+			}
+			else if(temp.value<results[count].value){
+				results.splice(count,0,temp);
+				added = true;
+			}
+			else if(temp.value===results[count].value){
+				if(temp.order < results[count].order){
+					results.splice(count,0,temp);
+					added = true;
+				}
+				else count++;
+			}
+			else count++;
+		}
+	}
+	array = results;
   return array;
 };
