@@ -51,6 +51,7 @@ var insertionSort = function(array
 	let length = array.length;
 	for (let i=0; i<length;i++){
 		let temp = array[i];
+		temp.i = i;
 		let added = false;
 		let count = 0;
 		while(!added){
@@ -63,7 +64,7 @@ var insertionSort = function(array
 				added = true;
 			}
 			else if(temp.value===results[count].value){
-				if(temp.order < results[count].order){
+				if(temp.i < results[count].i){
 					results.splice(count,0,temp);
 					added = true;
 				}
