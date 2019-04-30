@@ -98,5 +98,58 @@
 
 
 var mergeSort = function(array) {
+	let runIndex = [];
+	let runLength = [];
+	let count = 0;
+	let unlovedNumbers = [];
   // Your code here.
+  /*___________________Finding Runs_______________________*/
+
+  for(let i = 0; i< array.length; i++){
+  	if(array[i]<array[i+1] && count === 0){
+  		 runIndex.push(i);
+  		 count++;
+  	}
+  	else if(array[i]<array[i+1]) count++;
+  	else if(count !== 0){
+  		runLength.push(count);
+  		count = 0;
+  	}
+  	else unlovedNumbers.push(array[i]);
+  }
+  let sortedArrs = []
+  for(let i = 0; i<runIndex.length;i++){
+  	sortedArrs.push(array.slice(runIndex[i],runIndex[i]+runLength[i]));
+  }
+  /*____________Adding Unsorted to First Arr_______________*/
+  for(let i = 0; i<unlovedNumbers.length; i++){
+  	let added = false;
+	if(!added && unlovedNumbers[i] < sortedArrs[0][0]){
+		sortedArrs[0].unshift(unlovedNumbers[i]);
+		added = true;
+	}
+	else if(!added && unlovedNumbers[i] > sortedArrs[0][sortedArrs[0].length-1]){
+		sortedArrs[0].push(unlovedNumbers[i]);
+		added = true;
+	}
+	else if(!added){
+		for(let k = 0; k<sortedArrs[0].length;k++){
+			if(unlovedNumbers[i] >= sortedArrs[0][k] && unlovedNumbers[i] < sortedArrs[0][k+1]){
+				sortedArrs[0].splice(k,0,unlovedNumbers[i]);
+				added = true;
+			}
+		}
+	}
+  }
+  /*___________________Final Merge_______________________*/
+  while(sortedArrs.length > 1){
+  	let final = sortedArrs[0];
+  	let added = false;
+  	for(let i = 0; i < temp.length; i++){
+  		let temp = sortedArrs[sortedArrs.length-1]
+  		for(let j=0;j<final.length;j++){
+  			if(!added && temp[j] < final[i])
+  		}
+  	}
+  }
 };
