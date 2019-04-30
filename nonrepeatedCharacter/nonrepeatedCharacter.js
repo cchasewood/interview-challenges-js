@@ -17,5 +17,6 @@ var firstNonRepeatedCharacter = function(string) {
 	for(key in storage){
 		if(storage[key] === 1) return key;
 	}
+	return null;
   // TODO: your solution here
 };
