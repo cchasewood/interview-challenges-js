@@ -98,58 +98,50 @@
 
 
 var mergeSort = function(array) {
-	let runIndex = [];
-	let runLength = [];
-	let count = 0;
-	let unlovedNumbers = [];
-  // Your code here.
-  /*___________________Finding Runs_______________________*/
+var mergeSort = function(array) 
+  
+  let len     = array.length,       // number of items in the arrayay 
+      middle,                     // middle of the arrayay
+      left,                       // left side of the arrayay 
+      right,                      // right side of the arrayay 
 
-  for(let i = 0; i< array.length; i++){
-  	if(array[i]<array[i+1] && count === 0){
-  		 runIndex.push(i);
-  		 count++;
-  	}
-  	else if(array[i]<array[i+1]) count++;
-  	else if(count !== 0){
-  		runLength.push(count);
-  		count = 0;
-  	}
-  	else unlovedNumbers.push(array[i]);
+  // arrayays with 0 or 1 elements don't need sorting
+  if (len < 2) {
+    return array
   }
-  let sortedArrs = []
-  for(let i = 0; i<runIndex.length;i++){
-  	sortedArrs.push(array.slice(runIndex[i],runIndex[i]+runLength[i]));
+
+  middle = Math.floor(len/2)
+
+
+  left = array.slice(0, middle)   // left side, from 0 to the middle  
+  right = array.slice(middle)     // right side, from the middle to the end
+
+  return merge(MergeSort(left), MergeSort(right))
+
+}
+
+
+// Merges 2 sorted arrays
+function merge(left, right) {
+  let result = [],
+      i = 0,
+      j = 0
+
+  while(i < left.length && j < right.length) {
+
+    // Elements in both arrays are compared against each other.
+    // Whichever element is smaller it's inserted in the results.
+    
+    if(left[i] < right[j]) {
+      result.push(left[i++])       // Each time a value from one array is added, it's 
+    } else {                       // corresponding index variable is incremented.
+      result.push(right[j++])
+    }
   }
-  /*____________Adding Unsorted to First Arr_______________*/
-  for(let i = 0; i<unlovedNumbers.length; i++){
-  	let added = false;
-	if(!added && unlovedNumbers[i] < sortedArrs[0][0]){
-		sortedArrs[0].unshift(unlovedNumbers[i]);
-		added = true;
-	}
-	else if(!added && unlovedNumbers[i] > sortedArrs[0][sortedArrs[0].length-1]){
-		sortedArrs[0].push(unlovedNumbers[i]);
-		added = true;
-	}
-	else if(!added){
-		for(let k = 0; k<sortedArrs[0].length;k++){
-			if(unlovedNumbers[i] >= sortedArrs[0][k] && unlovedNumbers[i] < sortedArrs[0][k+1]){
-				sortedArrs[0].splice(k,0,unlovedNumbers[i]);
-				added = true;
-			}
-		}
-	}
-  }
-  /*___________________Final Merge_______________________*/
-  while(sortedArrs.length > 1){
-  	let final = sortedArrs[0];
-  	let added = false;
-  	for(let i = 0; i < temp.length; i++){
-  		let temp = sortedArrs[sortedArrs.length-1]
-  		for(let j=0;j<final.length;j++){
-  			if(!added && temp[j] < final[i])
-  		}
-  	}
-  }
-};
+
+  // As soon as one of the arrays has been finished, the
+  // remaining values are added to the end of the result array
+
+  return result.concat(left.slice(i)).concat(right.slice(j))
+
+}
