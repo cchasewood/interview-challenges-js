@@ -41,6 +41,17 @@ var phoneDigitsToLetters = {
 };
 
 
+
 var telephoneWords = function(digitString) {
   // TODO: return every combination that can be spelled on a phone with these digits
+  let results = [];
+  let chooseLetter = function (word, digitsLeft) {
+    if (digitsLeft.length === 0) {
+      return results.push(word);
+    }
+    phoneDigitsToLetters[digitsLeft[0]].split('')
+      .forEach((letter) => chooseLetter(word + letter, digitsLeft.slice(1)));
+  };
+  chooseLetter('', digitString.split(''));
+  return results;
 };

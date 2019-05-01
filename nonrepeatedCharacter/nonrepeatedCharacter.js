@@ -8,6 +8,7 @@
 
 var firstNonRepeatedCharacter = function(string) {
 	let storage = {};
+	let key;
 	for(let i=0;i<string.length;i++){
 		if(!storage[string[i]]) {
 			storage[string[i]] = 1;
