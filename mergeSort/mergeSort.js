@@ -124,7 +124,3 @@ var merge = function(left, right) {
   return result.concat(left.slice(i)).concat(right.slice(j))
 
 }
-
-let arr = [4,7,4,3,9,1,2];
-
-let results = mergeSort(arr);
