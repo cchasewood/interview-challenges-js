@@ -11,7 +11,27 @@
   * var anagrams = allAnagrams('abc');
   * console.log(anagrams); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
+/*___________________________ALL ANAGRAMS_____________________________*/
+// added anagram and anagrams parameters to
+// allow for recursion without a helper function
+var allAnagrams = function(string, anagram = '', anagrams = []){
+	/*__________Setting Variables and Checking for Recursion__________*/
+	let n = string.length;
+	string = string.toUpperCase();
+	if (anagram) anagrams.push(anagram);
+	if (!string) return;
+	/*_______________Recursively Building Anagram List_______________*/
+	for(let i=0; i< string.length; i++) {
+		anagram += string[i];
+		allAnagrams(string.slice(0,i)+string.slice(i+1), anagram, anagrams);
+		anagram = anagram.slice(0, anagram.length-1);
+	}
+	/*___________Ensuring Uniqueness and Building Results____________*/
+	let unique = [...new Set(anagrams)];
+	let results = [];
+	for(let i=0; i< unique.length; i++){
+		if(unique[i].length === n) results.push(unique[i])
+	}
+	return results;
+}
 
-var allAnagrams = function(string) {
-  // Your code here.
-};
