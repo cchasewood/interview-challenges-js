@@ -24,8 +24,23 @@ makeChange(1) === 1
 makeChange(2) === 2
 */
 
-var makeChange = function(total) {
 
+var makeChange = function(total){
+  let combinations = 0;
+  let coins = [1,2,5,10,20,50,100,200];
+/*______________Inner Recursive Function________________*/
+  let recurse = function(i, curAmount){
+    let coin = coins[i];
+    if( i === 0){
+      if( curAmount % coin === 0) combinations++;
+      return;
+    }
+    while( curAmount >= 0 ){
+      recurse(i-1, curAmount);
+      curAmount -= coin;
+    }
+  }
+/*___________Calling Recurse And Returning_____________*/
+  recurse(coins.length-1, total);
+  return combinations;
 };
-
-
