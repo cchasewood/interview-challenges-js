@@ -33,11 +33,15 @@
 
 var shuffleDeck = function(deck) {
   // Your code here
-  for( let i=0; i < deck.length; i++){
-    let ranPos = Math.floor(i + (Math.random() * (deck.length - (i+1))));
-    let temp = deck[i];
-    deck[i] = deck[ranPos];
-    deck[ranPos] = temp;
+  let count = 0;
+  while(count < 5) {
+    for( let i=0; i < deck.length; i++){
+      let ranPos = Math.floor(i + (Math.random() * (deck.length - (i+1))));
+      let temp = deck[i];
+      deck[i] = deck[ranPos];
+      deck[ranPos] = temp;
+    }
+    count++;
   }
   return deck;
 };
