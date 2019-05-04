@@ -15,11 +15,10 @@
 // added anagram and anagrams parameters to
 // allow for recursion without a helper function
 var allAnagrams = function(string, anagram = '', anagrams = []){
-	/*__________Setting Variables and Checking for Recursion__________*/
-	let n = string.length;
+	/*_____________________Checking for Recursion____________________*/
 	string = string.toUpperCase();
 	if (anagram) anagrams.push(anagram);
-	if (!string) return;
+	if (anagram.length === string.length) results.push(anagram);
 	/*_______________Recursively Building Anagram List_______________*/
 	for(let i=0; i< string.length; i++) {
 		anagram += string[i];
@@ -30,7 +29,7 @@ var allAnagrams = function(string, anagram = '', anagrams = []){
 	let unique = [...new Set(anagrams)];
 	let results = [];
 	for(let i=0; i< unique.length; i++){
-		if(unique[i].length === n) results.push(unique[i])
+		if(unique[i].length === string.length) results.push(unique[i])
 	}
 	return results;
 }

@@ -17,5 +17,4 @@
  * -> ["", "j", "ju", "jm", "jp", "jmu", "jmp", "jpu", "jmpu", "u", "m", "p", "mu", "mp", "pu", "mpu"]
  */
 
-var powerSet = function(str) {
-};
+var powerSet = str => str.split("").reduce((char, val) => char.concat(char.map(temp =>temp + val)),['']);
