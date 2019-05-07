@@ -35,7 +35,15 @@ var Tree = function(value) {
   this.children = [];
 };
 
-Tree.prototype.DFSelect = function(filter) {
+Tree.prototype.DFSelect = function(filter, depth = 0) {
+  let results = [];
+  if(filter(this.value, depth)) results.push(this.value);
+  if(this.children) {
+    for(let i=0;i<this.children.length;i++){
+      results = results.concat(this.children[i].DFSelect(filter, depth+1));
+    }
+  }
+  return results;
 };
 
 
