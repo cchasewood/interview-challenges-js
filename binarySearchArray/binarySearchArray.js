@@ -15,7 +15,7 @@ var binarySearch = function (array, target) {
 	let mid = array[midIndex];
 	if(target === array[midIndex]) return midIndex;
 	else if(target < array[midIndex]) {
-		for(let i=midIndex-1; i > 0; i--){
+		for(let i=midIndex-1; i >= 0; i--){
 			if(target === array[i]) return i;
 		}
 	}
@@ -23,6 +23,6 @@ var binarySearch = function (array, target) {
 		for(let i=midIndex+1; i < array.length; i++){
 			if(target === array[i]) return i;
 		}
-		return null;
 	}
+	return null;
 };
