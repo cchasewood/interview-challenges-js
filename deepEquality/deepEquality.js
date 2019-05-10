@@ -12,4 +12,13 @@
   *
   */
 var deepEquals = function(apple, orange) {
+  let appleKeys = Object.keys(apple);
+  for(let i=0;i<appleKeys.length;i++) {
+    if(typeof orange[appleKeys[i]] === 'object') {
+      let equal = deepEquals(orange[appleKeys[i]], apple[appleKeys[i]]);
+      if(equal === false) return false;
+    }
+    else if(orange[appleKeys[i]] !== apple[appleKeys[i]]) return false;
+  }
+  return true;
 };
