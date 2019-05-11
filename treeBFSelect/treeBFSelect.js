@@ -43,7 +43,7 @@ Tree.prototype.BFSelect = function(filter, depth = 0) {
   if(filter(this.value, depth)) results.push(this.value);
   if(this.children) {
     for(let i=0;i<this.children.length;i++){
-      results = results.concat(this.children[i].BFSelect(filter, depth+1, queue));
+      results = results.concat(this.children[i].BFSelect(filter, depth+1));
     }
   }
   return results.sort();
