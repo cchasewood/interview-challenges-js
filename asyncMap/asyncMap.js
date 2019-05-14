@@ -37,18 +37,13 @@
  *
  */
 
-var asyncMap = function(tasks, callback, results = []) {
-	if(tasks.length > 1) {
-      tasks[0]((data)=> {
-      	results.push(data)
-      	tasks = tasks.slice(1)
-      	asyncMap(tasks, callback, results);
-      });
-	}
-	else {
-	  tasks[0]((data) => {
-	  	results.push(data);
-	  	callback(results);
-	  });
-	}
+var asyncMap = function(tasks, cb, res = []) {
+	if(tasks.length > 1) tasks.shift()((data)=> {
+	  res.push(data)
+	  asyncMap(tasks, cb, res);
+	});
+	else tasks.shift()((data) => {
+	  res.push(data);
+	  cb(res);
+    });
 };
