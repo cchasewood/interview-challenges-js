@@ -23,10 +23,7 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
-};
+var bind = (func, boundThis, ...arguments) =>  (...args) =>  func.call(boundThis, arguments, args);
 
 /*
  * Function.prototype.bind:
@@ -53,7 +50,4 @@ var bind = function(
  *
 */
 
-Function.prototype.bind = function(
-) {
-  // TODO: Your code here
-};
+Function.prototype.bind = function(boundThis, ...arguments) { return (...args) => this.call(boundThis, arguments, args);};
