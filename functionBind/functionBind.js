@@ -23,7 +23,7 @@
  *
 */
 
-var bind = (func, boundThis, ...prevArgs) =>  (...args) =>  func.call(boundThis, prevArgs, args);
+var bind = (func, boundThis, ...prevArgs) =>  (...args) =>  func.apply(boundThis, prevArgs.concat(args));
 
 /*
  * Function.prototype.bind:
@@ -50,4 +50,4 @@ var bind = (func, boundThis, ...prevArgs) =>  (...args) =>  func.call(boundThis,
  *
 */
 
-Function.prototype.bind = function(boundThis, ...prevArgs) { return (...args) => this.call(boundThis, prevArgs, args);};
+Function.prototype.bind = function(boundThis, ...prevArgs) { return (...args) => this.apply(boundThis, prevArgs.concat(args));};
