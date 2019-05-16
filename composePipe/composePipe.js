@@ -32,9 +32,6 @@
  */
 
 'use strict';
+let compose = (...funcs) => funcs.reduce((prev, next) => (...args) => prev(next(...args)));
 
-var compose = function() {
-};
-
-var pipe = function() {
-};
+let pipe = (...funcs) => compose.apply(compose, funcs.reverse());
