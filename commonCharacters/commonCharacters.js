@@ -10,8 +10,4 @@
  * Extra credit: Extend your function to handle more than two input strings.
  */
 
-
-var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
-
-};
+const commonCharacters = (...strs) => strs.shift().split('').filter((val, i, self) => self.indexOf(val) === i).reduce((acc, cur) => strs.every(str => str.split('').includes(cur)) ? acc + cur : acc);
