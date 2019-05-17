@@ -10,4 +10,4 @@
  * Extra credit: Extend your function to handle more than two input strings.
  */
 
-const commonCharacters = (...strs) => strs[0] ? strs.shift().split('').filter((val, i, self) => self.indexOf(val) === i).filter(cur => strs.every(str => str.split('').includes(cur))).join() : '';
+const commonCharacters = (...strs) => strs[0] ? strs.shift().split('').filter((val, i, self) => self.indexOf(val) === i).filter(cur => strs.every(str => str.split('').includes(cur))).join('') : '';
