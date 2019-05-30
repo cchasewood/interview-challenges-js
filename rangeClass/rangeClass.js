@@ -39,17 +39,149 @@
  */
 
 
-var Range = function(start, end, step) {
-};
+class Range {
 
-Range.prototype.size = function () {
-};
+  constructor(start, end, step) {
+    this.start = start;
+    end ? this.end = end : this.end = start;
+    step ? this.step = step: this.step = 1;
+  }
 
-Range.prototype.each = function (callback) {
-};
+  size() {
+	let start, end, step;
+  	if(this.step < 0) {
+		start = this.end;
+		end = this.start;
+		step = Math.abs(this.step);
+	} else {
+		start = this.start;
+		end = this.end;
+		step = this.step;
+	}
+  	let size = 0
+	let current = start;
+	if(current) size++;
+	if(start <= end) {
+	  if(step){
+	  	current += step;
+	    while(current <= end) {
+	      size++
+	      current += step;
+	    }
+	  } else {
+	  	current++;
+	    while(current <= end) {
+	      size++
+	      current++;
+	    }  
+	  }
+	} else {
+      if(step){
+      	current -= step;
+	    while(current >= end) {
+	      size++
+	      current -= step;
+	    }
+	  } else {
+	  	current--;
+	    while(current >= end) {
+	      size++
+	      current--;
+	    }  
+	  }
+	}
+  	return size;
+  }
 
-Range.prototype.includes = function (val) {
-};
+  each(callback) {
+  	let start, end, step;
+  	if(this.step < 0) {
+		start = this.end;
+		end = this.start;
+		step = Math.abs(this.step);
+	} else {
+		start = this.start;
+		end = this.end;
+		step = this.step;
+	}
+	let current = start;
+	callback(current);
+	if(start <= end) {
+	  if(step){
+	  	current += step;
+	    while(current <= end) {
+	      callback(current)
+	      current += step;
+	    }
+	  } else {
+	  	current++;
+	    while(current <= end) {
+	      callback(current)
+	      current++;
+	    }  
+	  }
+	} else {
+      if(step){
+      	current -= step;
+	    while(current >= end) {
+	      callback(current)
+	      current -= step;
+	    }
+	  } else {
+	  	current--;
+	    while(current >= end) {
+	      callback(current)
+	      current--;
+	    }  
+	  }
+	}
+  }
+
+  includes(val) {
+  	let start, end, step;
+  	if(this.step < 0) {
+		start = this.end;
+		end = this.start;
+		step = Math.abs(this.step);
+	} else {
+		start = this.start;
+		end = this.end;
+		step = this.step;
+	}
+	let current = start;
+	if(current === val) return true;
+	if(start <= end) {
+	  if(step){
+	  	current += step;
+	    while(current <= end) {
+	      if(current === val) return true;
+	      current += step;
+	    }
+	  } else {
+	  	current++;
+	    while(current <= end) {
+	      if(current === val) return true;
+	      current++;
+	    }  
+	  }
+	} else {
+      if(step){
+      	current -= step;
+	    while(current >= end) {
+	      if(current === val) return true;
+	      current -= step;
+	    }
+	  } else {
+	  	current--;
+	    while(current >= end) {
+	      if(current === val) return true;
+	      current--;
+	    }  
+	  }
+	}
+	return false;
+  }
+}
 
 var range = new Range(1);
 
