@@ -38,6 +38,18 @@ function Node (val) {
 
 
 function linkedListIntersection(list1, list2) {
-  // TODO: Implement this function!
+  let l1 = [];
+  let l2 = [];
+  let temp = list1;
+  while(temp.value !== null) {
+    l1.push(temp.value);
+    temp = temp.next;
+  }
+  temp = list2;
+  while(temp.value !== null) {
+    l2.push(temp.value);
+    temp = temp.next;
+  }
+  return l1.filter(val => l2.includes(val))
 }
 
