@@ -1,4 +1,6 @@
 
+
+
 /**
  * Given a roman numeral as input, write a function that converts the roman
  * numeral to a number and outputs it.
@@ -27,7 +29,5 @@ var DIGIT_VALUES = {
   M: 1000
 };
 
-var translateRomanNumeral = function(romanNumeral) {
-// TODO: Implement me!
+var translateRomanNumeral = romanNumeral => romanNumeral.split('').reduce((acc, cur, i, self) => DIGIT_VALUES[cur] < DIGIT_VALUES[self[i+1]] ? acc - DIGIT_VALUES[cur] : acc + DIGIT_VALUES[cur], 0);
 
-};
