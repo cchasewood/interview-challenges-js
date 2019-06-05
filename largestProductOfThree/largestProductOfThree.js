@@ -9,9 +9,21 @@
 
 
 var largestProductOfThree = array => {
-  let one, two, three;
+  let one, two, three, none, ntwo;
   //array.filter((val, i, self) => self.length <= 3 ? val : self.forEach((value, idx, arr, acc = 0) => val <= value))
-  array.map((val, i, self) => {
+  let negatives = array.filter(val => val < 0);
+  if (negatives.length >= 2) {
+    negatives.map(val => {
+      if(!none || val < none) {
+      	ntwo = none;
+      	none = val;
+      }
+      else if(!ntwo || val > ntwo) {
+      	ntwo = val;
+      }
+    })
+  }
+  array.map(val => {
     if(!one || val > one) {
     	three = two;
     	two = one;
@@ -23,6 +35,7 @@ var largestProductOfThree = array => {
     }
     else if(!three || val > three) three = val;
   })
-
+  if(Math.abs(none*ntwo) > one*two) return none*ntwo*one;
+  else if(Math.abs(none*ntwo) > two*three) return one*none*ntwo
   return one*two*three;
 };
