@@ -35,7 +35,8 @@ var largestProductOfThree = array => {
     }
     else if(!three || val > three) three = val;
   })
-  if(Math.abs(none*ntwo) > one*two) return none*ntwo*one;
+  if(negatives.length === array.length) return one*two*three
+  else if(Math.abs(none*ntwo) > one*two) return none*ntwo*one;
   else if(Math.abs(none*ntwo) > two*three) return one*none*ntwo
   return one*two*three;
 };
