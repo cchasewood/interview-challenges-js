@@ -18,7 +18,7 @@ var largestProductOfThree = array => {
       	ntwo = none;
       	none = val;
       }
-      else if(!ntwo || val > ntwo) {
+      else if(!ntwo || val < ntwo) {
       	ntwo = val;
       }
     })
