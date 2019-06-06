@@ -17,4 +17,4 @@
  * -> ["", "j", "ju", "jm", "jp", "jmu", "jmp", "jpu", "jmpu", "u", "m", "p", "mu", "mp", "pu", "mpu"]
  */
 
-var powerSet = str => str.split("").filter((value, index, self) => self.indexOf(value) === index).reduce((char, val) => char.concat(char.map(temp =>temp + val)).sort(),['']);
+var powerSet = str => str.split("").filter((val, i, self) => self.indexOf(val) === i).reduce((char, val) => char.concat(char.map(set =>set + val)).sort(),['']);

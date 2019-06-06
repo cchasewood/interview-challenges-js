@@ -22,4 +22,3 @@
 const DIGIT_VALUES = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
 
 const translateRomanNumeral = romNum => typeof romNum === 'string' ? romNum.split('').reduce((acc, cur, i, self) => DIGIT_VALUES[cur] < DIGIT_VALUES[self[i+1]] ? acc - DIGIT_VALUES[cur] : acc + DIGIT_VALUES[cur], 0) : null;
-
