@@ -18,19 +18,4 @@ Example input:
 157638429"
 */
 
-
-
 let sudokuChecker = (board, offset = [0,3,6,27,30,33,54,57,60], template = [0,1,2,9,10,11,18,19,20]) => offset.map(i => template.map(index => board.split('\n').map(row => row.split('')).reduce((acc, cur, i, self) => acc.concat(cur),[])[i+index])).every(grid => grid.filter((val, i, self) => self.indexOf(val) === i).length === 9) && board.split('\n').map(row => row.split(''))[0].map((col, i) => board.split('\n').map(row => row.split('')[i])).map(col => col.filter((val, i, self) => self.indexOf(val) === i)).every(row => row.length === 9) && board.split('\n').map(row => row.split('').filter((val, i, self) => self.indexOf(val) === i)).every(row => row.length === 9) ? 'solved' : 'invalid'
-  
-//let result = sudokuChecker("735814296\n896275314\n214963857\n589427163\n362189745\n471356982\n923541678\n648792531\n157638429");
-  //checks 3x3's
-  //let serialBoard = board.split('\n').map(row => row.split('')).reduce((acc, cur, i, self) => acc.concat(cur),[])
-  //offset.map(i => template.map(index => board.split('\n').map(row => row.split('')).reduce((acc, cur, i, self) => acc.concat(cur),[])[i+index]))
-  // let subBoards = []
-  // for(let i of offset){
-  // 	let subBoard = []
-  // 	for(let index of template) {
-  // 		subBoard.push(serialBoard[i+index])
-  // 	}
-  // 	subBoards.push(subBoard);
-  // }
